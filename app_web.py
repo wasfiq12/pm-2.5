@@ -22,7 +22,7 @@ try:
 
     ee.Initialize(
         credentials=credentials,
-        project="wasfiq"
+        project="wasfiq12"
     )
 
 except Exception as e:
