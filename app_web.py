@@ -44,7 +44,8 @@ with col1:
         attr="© OpenStreetMap contributors",
         name="OpenStreetMap",
         subdomains="abcd",
-        max_zoom=20
+        max_zoom=20,
+        referrer_policy="strict-origin-when-cross-origin"
     )
 
     def add_ee_layer(self, ee_image_object, vis_params, name, show=True):
