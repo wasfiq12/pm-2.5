@@ -7,29 +7,27 @@ import matplotlib.pyplot as plt
 from google.oauth2 import service_account
 
 st.set_page_config(page_title="Dashboard Kualitas Udara Kalteng", layout="wide")
-st.title("🛰️ Dashboard Prediksi PM2.5 & Risiko Paparan Populasi")
 st.caption("Versi web — Google Earth Engine + Folium + Random Forest")
 st.markdown("**Lokasi:** Kalimantan Tengah | **Pemodelan:** Random Forest Machine Learning | **Periode:** Agustus 2026")
 st.markdown("---")
 
 try:
-    ee.Initialize(project='wasfiq')
+    credentials = service_account.Credentials.from_service_account_info(
+        st.secrets["gcp_service_account"],
+        scopes=[
+            "https://www.googleapis.com/auth/earthengine",
+            "https://www.googleapis.com/auth/cloud-platform"
+        ]
+    )
+
+    ee.Initialize(
+        credentials=credentials,
+        project="wasfiq"
+    )
+
 except Exception as e:
     st.error(f"Earth Engine gagal diinisialisasi: {e}")
     st.stop()
-credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"],
-    scopes=[
-        "https://www.googleapis.com/auth/earthengine",
-        "https://www.googleapis.com/auth/cloud-platform"
-    ]
-)
-
-ee.Initialize(
-    credentials=credentials,
-    project="wasfiq"
-)
-
 roi = ee.FeatureCollection('projects/wasfiq/assets/Kalteng')
 start_date = '2026-08-01'
 end_date = '2026-08-28'
