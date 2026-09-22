@@ -38,7 +38,7 @@ with col1:
         attr="© OpenStreetMap contributors",
         name="OpenStreetMap",
         subdomains="abcd",
-        referrer_policy="strict-origin-when-cross-origin"
+        referrer_policy="strict-origin-when-cross-origin",
         max_zoom=20
     )
 
