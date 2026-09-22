@@ -22,13 +22,13 @@ try:
 
     ee.Initialize(
         credentials=credentials,
-        project="wasfiq"
+        project="wasfiq12"
     )
 
 except Exception as e:
     st.error(f"Earth Engine gagal diinisialisasi: {e}")
     st.stop()
-roi = ee.FeatureCollection('projects/wasfiq/assets/Kalteng')
+roi = ee.FeatureCollection('projects/wasfiq12/assets/Kalteng')
 start_date = '2026-08-01'
 end_date = '2026-08-28'
 
