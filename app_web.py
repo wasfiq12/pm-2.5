@@ -4,6 +4,7 @@ import folium
 import streamlit.components.v1 as components
 import pandas as pd
 import matplotlib.pyplot as plt
+from google.oauth2 import service_account
 
 st.set_page_config(page_title="Dashboard Kualitas Udara Kalteng", layout="wide")
 st.title("🛰️ Dashboard Prediksi PM2.5 & Risiko Paparan Populasi")
@@ -16,6 +17,18 @@ try:
 except Exception as e:
     st.error(f"Earth Engine gagal diinisialisasi: {e}")
     st.stop()
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"],
+    scopes=[
+        "https://www.googleapis.com/auth/earthengine",
+        "https://www.googleapis.com/auth/cloud-platform"
+    ]
+)
+
+ee.Initialize(
+    credentials=credentials,
+    project="wasfiq"
+)
 
 roi = ee.FeatureCollection('projects/wasfiq/assets/Kalteng')
 start_date = '2026-08-01'
