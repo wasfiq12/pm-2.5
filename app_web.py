@@ -6,11 +6,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from google.oauth2 import service_account
 
-st.set_page_config(page_title="Dashboard Kualitas Udara Kalteng", layout="wide")
-st.caption("Versi web — Google Earth Engine + Folium + Random Forest")
-st.markdown("**Lokasi:** Kalimantan Tengah | **Pemodelan:** Random Forest Machine Learning | **Periode:** Agustus 2026")
-st.markdown("---")
-
 try:
     credentials = service_account.Credentials.from_service_account_info(
         st.secrets["gcp_service_account"],
