@@ -39,9 +39,11 @@ with col1:
     map_dash = folium.Map(
         location=[-1.5, 113.5],
         zoom_start=6,
-        tiles="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-        attr="© OpenStreetMap contributors © CARTO",
+        tiles="https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        attr="© OpenStreetMap contributors",
+        name="OpenStreetMap",
         subdomains="abcd",
+        referrer_policy="strict-origin-when-cross-origin"
         max_zoom=20
     )
 
